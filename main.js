@@ -39,8 +39,7 @@ const WINNING_COMBINATIONS = [
   [2, 4, 6],
 ];
 
-// --------------- game ----------------
-
+//
 let xTurn = true;
 
 // place mark
@@ -105,18 +104,17 @@ const drawWinner = (currentClass) => {
     })
   ) {
     drawText.classList.add("show");
-    console.log("Draw!");
     elbackgroundEffectTwo.classList.replace("hide", "show");
   }
 };
 
-const incrementScore = (currentClass) => {
-  if (currentClass === PLAYER_X_CLASS) {
-    xScore.textContent = +xScore.textContent + 1;
-  } else {
-    oScore.textContent = +oScore.textContent + 1;
-  }
-};
+// const incrementScore = (currentClass) => {
+//   if (currentClass === PLAYER_X_CLASS) {
+//     xScore.textContent = +xScore.textContent + 1;
+//   } else {
+//     oScore.textContent = +oScore.textContent + 1;
+//   }
+// };
 
 elElement.forEach((el) => {
   el.addEventListener("click", (e) => {
@@ -133,22 +131,24 @@ elElement.forEach((el) => {
     });
     if (checkForWin(currentClass)) {
       elbackgroundEffectTwo.classList.replace("hide", "show");
+      xScore.textContent = +xScore.textContent+1
       drawWinner(currentClass);
     } else if (isDraw) {
       elbackgroundEffectTwo.classList.replace("hide", "show");
+      tieScore.textContent = +xScore.textContent+1
       drawWinner("draw");
     }
-  });
+  },{once: true});
 });
 
 //
-const isFulledBoard = (currentClass) => {
-  const cells = Array.from(elElement);
-  if (!checkForWin(currentClass)) {
-    console.log("NO WINNER");
-    return cells.every((el) => el.classList.length === 2);
-  }
-};
+// const isFulledBoard = (currentClass) => {
+//   const cells = Array.from(elElement);
+//   if (!checkForWin(currentClass)) {
+//     console.log("NO WINNER");
+//     return cells.every((el) => el.classList.length === 2);
+//   }
+// };
 
 //  modal
 elRestart.addEventListener("click", () => {
