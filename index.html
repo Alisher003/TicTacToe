@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
+    <title>Tic-Tac-Toe</title>
+  </head>
+  <body>
+    <section class="home">
+      <div class="container">
+        <div class="main-top">
+          <img src="./img/x.svg" alt="" />
+          <img src="./img/o.svg" alt="" />
+        </div>
+
+        <div class="main-box">
+            <h4 class="main-box__heading">PICK PLAYER 1’S MARK</h3>
+
+                <div class="main-box__allbtn">
+                    <button class="btn btn-x">
+                        <img src="./img/x.svg" alt="">
+                    </button>
+                    <button class="btn btn-o">
+                        <img src="./img/o.svg" alt="">
+                    </button>
+                </div>
+
+            <h4 class="main-box__heading2">REMEMBER : X GOES FIRST</h4>
+
+        </div>
+        <div class="res">
+            <button  class="main-btn ">NEW GAME (VS CPU)</button>
+            <button  class="main-btn main-btn-two">NEW GAME  (VS PLAYER)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- game -->
+    <section class="game hide">
+      <div class="game">
+        <div class="game-detal">
+          <img src="./img/x-v.svg" alt="" />
+
+          <div class="game-turn">
+            <img  id="turnSvg" src="./img/x.svg" alt="">
+            <h4>TURN</h4>
+          </div>
+          <button class="restart">
+            <img src="./img/restart.svg" alt="">
+          </button>
+
+        </div>
+        <div class="box x">
+          <div class="element"></div>
+          <div class="element"></div>
+          <div class="element"></div>
+          <div class="element"></div>
+          <div class="element"></div>
+          <div class="element"></div>
+          <div class="element"></div>
+          <div class="element"></div>
+          <div class="element"></div>
+        </div>
+
+        <!-- win result -->
+        <div class="win">
+          <div class="win-result">
+            <h4 class="win__heading">X</h4>
+            <span data-xScore>0</span>
+          </div>
+          <div class="win-result">
+            <h4 class="win__heading">TIES</h4>
+            <span data-tieScore>0</span>
+          </div>
+          <div class="win-result">
+            <h4 class="win__heading">O</h4>
+            <span data-oScore>0</span>
+          </div>
+        </div>
+      </div> 
+    </section>
+
+    <!-- win -->
+
+
+    <div class="backgroundEffect hide">
+      <div class="game-status">
+        <div class="round">
+          <img  id="winnerSvg"  src="./img/x.svg" alt="">
+          <span data-draw-text>RESTART GAME?</span>
+        </div>
+        <div class="exit">
+          <button class="cansel" data-cancel>NO, CANCEL</button>
+          <button data-restart>YES, RESTART</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="backgroundEffectTwo hide ">
+
+      <div data-x-winner class="game-status hide">
+        <h2 data-winning-player>PLAYER  WINS!</h2>
+        <div class="round">
+          <img id="winnerSvg" src="" alt=""  />
+          <span data-draw-text>TAKES THE ROUND</span>
+        </div>
+        <div class="exit">
+          <button class="quit" data-quit>QUIT</button>
+          <button class="nextRaound" data-next-round>NEXT ROUND</button>
+        </div>
+      </div>
+    </div>
+
+    
+
+
+    <script src="./main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,462 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+  
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    scroll-behavior: smooth;
+}
+
+  
+body {
+    font-family: "Outfit", sans-serif;
+    background: #1a2a33;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+:root {
+    --cell-size: 140px;
+    --mark-size: calc(var(--cell-size) * 0.65);
+  }
+
+.main-top {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.main-box {
+    background: #1F3641;
+    padding: 25px;
+    box-shadow: inset 0px -8px 0px #10212A;
+    border-radius: 15px
+}
+
+.main-box__heading {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #A8BFC9;
+    
+}
+
+.main-box__heading2 {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #A8BFC9;
+}
+
+.main-box__allbtn {
+    padding: 8px;
+    background: #1A2A33;
+    border-radius: 10px;
+}
+
+.btn {
+    padding: 9px 95px;
+    background: rgba(168, 191, 201, 0.05);
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #1A2A33;
+}
+
+.btn:hover {
+    opacity: 0.7;
+}
+
+
+
+.main-btn {
+    padding: 17px 120px;
+    background: #F2B137;
+    margin-top: 40px;
+    box-shadow: inset 0px -8px 0px #CC8B13;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+    color: #1A2A33;
+}
+
+.main-btn:hover {
+    opacity: 0.7;
+}
+
+.main-btn-two {
+    background: #31C3BD;
+    margin-top: 20px;
+    box-shadow: inset 0px -8px 0px #118C87;
+}
+
+ 
+.res {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* game  */
+
+.game-detal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+  
+.game-turn {
+    background: #1f3641;
+    box-shadow: inset 0px -4px 0px #10212a;
+    border-radius: 10px;
+    padding: 13px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+}
+
+ 
+.game-turn h4 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 0;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #a8bfc9;
+}
+
+.restart{
+    padding: 16px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: #A8BFC9;
+    border-radius: 10px;
+}
+
+.restart:hover {
+    opacity: 0.8;
+}
+
+.restart:active {
+    opacity: 0.6;
+}
+
+/* box */
+  
+.box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.element {
+    cursor: pointer;
+    width: 140px;
+    height: 140px;
+    background: #1f3641;
+    box-shadow: inset 0px -8px 0px #10212a;
+    border-radius: 15px;
+    position: relative;
+}
+  
+
+/* win result */
+
+.win {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.win-result {
+    padding: 14px 40px;
+    background: #A8BFC9;
+    border-radius: 15px;
+    
+}
+
+.win__heading {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #1A2A33;
+    padding: 0;
+    margin: 0;
+}
+
+
+.hide {
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+
+/*  */
+
+.box .element {
+    cursor: pointer;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background: #1f3641;
+    box-shadow: inset 0px -8px 0px #10212a;
+    border-radius: 15px;
+    position: relative;
+  }
+  
+  .box .element:hover .element.x::before,
+  .box .element:hover .element.x::after {
+    content: "";
+    position: absolute;
+    width: calc(var(--mark-size) * 0.25);
+    height: var(--mark-size);
+  }
+  
+  .element.x,
+  .element.circle {
+    cursor: not-allowed;
+  }
+  
+  .element.x::before,
+  .element.x::after {
+    background: #31c3bd;
+    border-radius: 3px;
+  }
+  
+  .element.circle::before,
+  .element.circle::after {
+    background: #f2b137;
+  }
+  
+  .element.x::before,
+  .element.x::after {
+    left: 43%;
+    top: 18%;
+  }
+  
+  .box.x .element:not(.x):not(.circle):hover::before,
+  .box.x .element:not(.x):not(.circle):hover::after,
+  .box.circle .element:not(.x):not(.circle):hover::before {
+    border: 2px solid #31c3bd;
+    border-radius: 3px;
+    left: 43%;
+    top: 18%;
+  }
+  
+  .box.circle .element:not(.x):not(.circle):hover::before,
+  .box.circle .element:not(.x):not(.circle):hover::after {
+    border: 2px solid #f2b137;
+  }
+  
+  .element.x::before,
+  .element.x::after,
+  .box.x .element:not(.x):not(.circle):hover::before,
+  .box.x .element:not(.x):not(.circle):hover::after {
+    content: "";
+    position: absolute;
+    width: calc(var(--mark-size) * 0.25);
+    height: var(--mark-size);
+  }
+  
+  .element.x::before,
+  .box.x .element:not(.x):not(.circle):hover::before {
+    transform: rotate(45deg);
+  }
+  
+  .element.x::after,
+  .box.x .element:not(.x):not(.circle):hover::after {
+    transform: rotate(-45deg);
+  }
+  
+  .element.circle::before,
+  .element.circle::after,
+  .box.circle .element:not(.x):not(.circle):hover::before,
+  .box.circle .element:not(.x):not(.circle):hover::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  .element.circle::before,
+  .box.circle .element:not(.x):not(.circle):hover::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+    left: 18%;
+    top: 16%;
+  }
+  
+  .element.circle::after,
+  .box.circle .element:not(.x):not(.circle):hover::after {
+    width: calc(var(--mark-size) * 0.6);
+    height: calc(var(--mark-size) * 0.6);
+    background-color: #1f3641;
+    left: 31%;
+    top: 28.5%;
+  }
+
+  .winningCellBgX {
+    background-color: #31c3bd !important;
+  }
+  
+  .winningCellBgO,
+  .winningCellBgO::after {
+    background-color: #f2b137 !important;
+  }
+  
+  .winningCellBgX.x::after,
+  .winningCellBgX.x::before,
+  .winningCellBgO.cell::before {
+    background-color: #1f3641;
+  }
+  
+  .backgroundEffect,  .backgroundEffectTwo {
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .refresh {
+    cursor: pointer;
+  }
+  
+  .game-status {
+    top: 50%;
+    transform: translate(0%, -50%);
+    width: 100vw;
+    height: 266px;
+    background: #1f3641;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+  }
+  
+  .game-status h2 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #a8bfc9;
+  }
+  
+  .round {
+    margin-top: 23px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  
+  .round span {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 50px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #31c3bd;
+  }
+  
+  .exit {
+    margin-top: 31px;
+  }
+  
+  .exit button {
+    padding: 15px 17px;
+    background: #f2b137;
+    box-shadow: inset 0px -4px 0px #cc8b13;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #1a2a33;
+  }
+  
+  .exit button:last-child:hover {
+    background: #ffc860;
+  }
+  
+  .exit button:first-child {
+    margin-right: 16px;
+    background: #a8bfc9;
+    box-shadow: inset 0px -4px 0px #6b8997;
+  }
+  
+  .exit button:first-child:hover {
+    background: #dbe8ed;
+  }
+  
+  .scores {
+    margin-top: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .scores > div {
+    background: #31c3bd;
+    border-radius: 15px;
+    width: 140px;
+    height: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .xScore span,
+  .oScore span,
+  .ties span {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #1a2a33;
+  }
+  
+  .xScore p,
+  .oScore p,
+  .ties p {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.875px;
+    color: #1a2a33;
+  }
+  
+  .ties {
+    background: #a8bfc9 !important;
+  }
+  
+  .oScore {
+    background: #f2b137 !important;
+  }
