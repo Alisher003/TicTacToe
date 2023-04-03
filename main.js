@@ -18,6 +18,8 @@ const dataWinningPlayer = document.querySelector("[data-winning-player]");
 const xScore = document.querySelector("[data-xScore]");
 const tieScore = document.querySelector("[data-tieScore]");
 const oScore = document.querySelector("[data-oScore]");
+const elres = document.querySelector("[data-restart]");
+
 
 // page
 elMainBtn.addEventListener("click", () => {
@@ -176,11 +178,6 @@ elNextRound.addEventListener("click", () => {
     }
   });
 
-  // elElement.forEach((cell) => {
-  //   cell.addEventListener("click", () => {
-      
-  //   }, { once: true });
-  // });
 
   elbackgroundEffectTwo.classList.replace("show", "hide");
   xTurn = true;
@@ -188,12 +185,9 @@ elNextRound.addEventListener("click", () => {
   setHoverClass()
 });
 
-elRestart.addEventListener("click", () => {
-  drawEffect.classList.replace("show", "hide");
-  clearBoard();
-  xTurn = true;
-  setHoverClass();
-  xScore.textContent = 0;
-  oScore.textContent = 0;
-  tieScore.textContent = 0;
+elres.addEventListener("click", () => {
+  elbackgroundEffectTwo.classList.replace("hide", "hide");
+  window.location.reload();
 });
+
+
