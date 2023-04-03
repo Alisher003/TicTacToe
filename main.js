@@ -108,14 +108,6 @@ const drawWinner = (currentClass) => {
   }
 };
 
-// const incrementScore = (currentClass) => {
-//   if (currentClass === PLAYER_X_CLASS) {
-//     xScore.textContent = +xScore.textContent + 1;
-//   } else {
-//     oScore.textContent = +oScore.textContent + 1;
-//   }
-// };
-
 elElement.forEach((el) => {
   el.addEventListener("click", (e) => {
     const cell = e.target;
@@ -125,7 +117,7 @@ elElement.forEach((el) => {
     setHoverClass();
     const isDraw = [...elElement].every((cell) => {
       return (
-        cell.classList.contains(PLAYER_X_CLASS) ||
+        cell.classList.contains(PLAYER_X_CLASS) ||  
         cell.classList.contains(PLAYER_O_CLASS)
       );
     });
@@ -135,20 +127,12 @@ elElement.forEach((el) => {
       drawWinner(currentClass);
     } else if (isDraw) {
       elbackgroundEffectTwo.classList.replace("hide", "show");
-      tieScore.textContent = +xScore.textContent+1
+      tieScore = +xScore.textContent+1
       drawWinner("draw");
     }
   },{once: true});
 });
 
-//
-// const isFulledBoard = (currentClass) => {
-//   const cells = Array.from(elElement);
-//   if (!checkForWin(currentClass)) {
-//     console.log("NO WINNER");
-//     return cells.every((el) => el.classList.length === 2);
-//   }
-// };
 
 //  modal
 elRestart.addEventListener("click", () => {
@@ -164,7 +148,44 @@ elQuit.addEventListener("click", () => {
 });
 
 elNextRound.addEventListener("click", () => {
-  window.location.reload();
+  elElement.forEach((el) => {
+    if(el.classList.contains('circle') || el.classList.contains('x')){
+      el.classList.value = el.classList.value.slice(0,7);
+      el.addEventListener('click', e => {
+        const cell = e.target;
+        const currentClass = xTurn ? PLAYER_X_CLASS : PLAYER_O_CLASS;
+        placeMark(cell, currentClass);
+        changeTurns();
+        setHoverClass();
+        const isDraw = [...elElement].every((cell) => {
+          return (
+            cell.classList.contains(PLAYER_X_CLASS) ||  
+            cell.classList.contains(PLAYER_O_CLASS)
+          );
+        });
+        if (checkForWin(currentClass)) {
+          elbackgroundEffectTwo.classList.replace("hide", "show");
+          xScore.textContent = +xScore.textContent+1
+          drawWinner(currentClass);
+        } else if (isDraw) {
+          elbackgroundEffectTwo.classList.replace("hide", "show");
+          tieScore = +xScore.textContent+1
+          drawWinner("draw");
+        }
+      }, {once: true})
+    }
+  });
+
+  // elElement.forEach((cell) => {
+  //   cell.addEventListener("click", () => {
+      
+  //   }, { once: true });
+  // });
+
+  elbackgroundEffectTwo.classList.replace("show", "hide");
+  xTurn = true;
+  elBox.classList.replace(PLAYER_O_CLASS, PLAYER_X_CLASS);
+  setHoverClass()
 });
 
 elRestart.addEventListener("click", () => {
