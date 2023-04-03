@@ -129,7 +129,7 @@ elElement.forEach((el) => {
       drawWinner(currentClass);
     } else if (isDraw) {
       elbackgroundEffectTwo.classList.replace("hide", "show");
-      tieScore = +xScore.textContent+1
+      tieScore = + tieScore.textContent+1
       drawWinner("draw");
     }
   },{once: true});
@@ -171,7 +171,7 @@ elNextRound.addEventListener("click", () => {
           drawWinner(currentClass);
         } else if (isDraw) {
           elbackgroundEffectTwo.classList.replace("hide", "show");
-          tieScore = +xScore.textContent+1
+          tieScore = + tieScore.textContent+1
           drawWinner("draw");
         }
       }, {once: true})
